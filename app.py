@@ -35,3 +35,4 @@ if st.button("Decifrar"):
 if st.button("Limpar Tudo/Destruir Sessão"):
     st.rerun()
 
+
