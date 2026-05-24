@@ -30,9 +30,10 @@ if st.button("Decifrar"):
             response = model.generate_content(entrada)
             st.json(response.text)
         except Exception as e:
-            st.error(str(e))
+            st.warning("🔍 A Lupa precisa descansar um momento. Tente novamente em breve!")
 
 if st.button("Limpar Tudo/Destruir Sessão"):
     st.rerun()
+
 
 
