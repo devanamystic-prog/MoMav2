@@ -1,6 +1,5 @@
 import streamlit as st
-impormodel = genai.GenerativeModel("gemini-2.0-flash", system_instruction=LUPA_PROMPT)
-
+import google.generativeai as genai
 
 try:
     api_key = st.secrets["GOOGLE_API_KEY"]
@@ -13,7 +12,7 @@ Responda APENAS em JSON, seguindo esta estrutura:
   "mensagem_final": "A anotação em papel é a forma mais segura de guardar sua chave."
 }"""
 
-    model = genai.GenerativeModel("gemini-1.5-flash", system_instruction=LUPA_PROMPT)
+    model = genai.GenerativeModel("gemini-2.0-flash", system_instruction=LUPA_PROMPT)
 
 except Exception as e:
     st.error("Erro ao carregar a API")
@@ -35,3 +34,4 @@ if st.button("Decifrar"):
 
 if st.button("Limpar Tudo/Destruir Sessão"):
     st.rerun()
+
