@@ -1,5 +1,6 @@
 import streamlit as st
-import google.generativeai as genai
+impormodel = genai.GenerativeModel("gemini-2.0-flash", system_instruction=LUPA_PROMPT)
+
 
 try:
     api_key = st.secrets["GOOGLE_API_KEY"]
