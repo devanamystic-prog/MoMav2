@@ -16,11 +16,10 @@ except Exception as e:
     st.error("Erro ao carregar a API")
     st.code(str(e))
     st.stop()
-st.title("🔍 M.O.M.A. Lupa")
 
-st.set_page_config(page_title="MomaLupa", page_icon="🔍")
+st.set_page_config(page_title="M.O.M.A. Lupa", page_icon="🔍")
 st.image("logo.PNG", width=300)
-st.ti
+st.title("🔍 M.O.M.A. Lupa")
 st.markdown("*Identificador de Caracteres Ambíguos*")
 
 entrada = st.text_input("Cole o código aqui para decifrar:")
@@ -38,6 +37,7 @@ if st.button("Decifrar"):
 
 if st.button("Limpar Tudo/Destruir Sessão"):
     st.rerun()
+
 
 
 
