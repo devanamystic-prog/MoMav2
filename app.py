@@ -32,7 +32,7 @@ def validar_json(texto: str) -> LupaResponse:
     json_str = match.group(0)
     return LupaResponse.model_validate_json(json_str)
 
-# ==================== FUNÇÃO DE CORES ====================
+# ==================== CORES ====================
 def get_color(char: str) -> str:
     if char.lower() in ['l', 'i', '1']:
         return '#FF4444'   # vermelho
@@ -41,7 +41,7 @@ def get_color(char: str) -> str:
     else:
         return '#FFAA00'   # laranja
 
-# ==================== HIGHLIGHT DO TEXTO ORIGINAL ====================
+# ==================== HIGHLIGHT ====================
 def highlight_ambiguous(texto: str, analise: List[CaractereAnalise]) -> str:
     highlighted = texto
     for item in analise:
@@ -62,7 +62,7 @@ except Exception:
     st.stop()
 
 st.image("logo.PNG", width=300)
-st.title("🔍 M.O.M.A Lupa")
+st.title("M.O.M.A Lupa 🔍")          # ← Exatamente como você pediu
 st.markdown("*Identificador de Caracteres Ambíguos*")
 st.caption("🔐 Sua chave é analisada e destruída imediatamente")
 
@@ -82,12 +82,17 @@ if st.button("🔍 Decifrar", type="primary"):
 
                 st.success("✅ Análise concluída com segurança!")
 
-                # === TEXTO ORIGINAL COM CORES ===
-                st.markdown("**Texto original com destaque:**")
+                # Texto original com destaque
+                st.markdown("**Senha original:**")
+                st.code(entrada, language=None)
+                st.divider()
+
+                # Visual Lupa - caracteres ambíguos com cores
+                st.markdown("**🔍 Caracteres ambíguos detectados:**")
                 st.markdown(highlight_ambiguous(entrada, resultado.analise), unsafe_allow_html=True)
                 st.divider()
 
-                # === ANÁLISE COM AS MESMAS CORES ===
+                # Análise com as mesmas cores
                 for item in resultado.analise:
                     color = get_color(item.caractere)
                     st.markdown(f'<span style="color:{color}; font-weight:bold;">**{item.caractere}**</span> → {item.significado}', unsafe_allow_html=True)
